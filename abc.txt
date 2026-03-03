@@ -1,0 +1,24 @@
+#1 Lýsing á rafíþróttaliðum og rafíþróttamönnum þeirra.
+
+Gögn = 
+Lið = [
+    nöfn á liðum,
+    logo,
+    description,
+    region,
+    Players,
+    Coaches,
+    CEO
+]
+
+Leikmenn = [
+    Nickname,
+    Nöfn á mönnunum,
+    Profile Picture,
+    Nationality,
+    Birthday,
+    Status,
+    Role,
+    Team,
+    Years Active
+]
