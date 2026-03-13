@@ -5,10 +5,7 @@ Lið = [
     nöfn á liðum,
     logo,
     description,
-    region,
-    Players,
-    Coaches,
-    CEO
+    region
 ]
 
 Leikmenn = [
@@ -21,4 +18,8 @@ Leikmenn = [
     Role,
     Team,
     Years Active
+]
+
+Coaches = [
+
 ]
