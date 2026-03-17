@@ -14,10 +14,8 @@ Leikmenn = [
     Profile Picture,
     Nationality,
     Birthday,
-    Status,
     Role,
-    Team,
-    Years Active
+    Team
 ]
 
 Coaches = [
