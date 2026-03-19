@@ -1,9 +1,20 @@
 <%- include('partials/header') %>
 
 <h1>CS2 Teams</h1>
-<div>
 
-    
-</div>
+
+<section>
+
+    <% teams.forEach(team => { %>
+        <div>
+
+            <div>
+                <h4><%= team.title %></h4>
+                <p><%= team.description %></p>
+            </div>
+        </div>
+    <% }) %>
+
+</section>
 
 <%- include('partials/footer') %>

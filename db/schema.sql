@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE CHECK(email LIKE "%_@_%._%"),
+    email VARCHAR(255) UNIQUE CHECK(email LIKE '%_@_%._%'),
     password VARCHAR(255) NOT NULL,
     created TIMESTAMP,
     last_login TIMESTAMP
