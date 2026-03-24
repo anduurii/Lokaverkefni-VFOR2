@@ -5,6 +5,17 @@ const getAllTeams = async () => {
     return result.rows;
 };
 
+const getTeamById = async (id) => {
+    const result = await db.query('SELECT * FROM teams WHERE id = $1', [id]);
+
+    if (result.rows.length === 0) {
+        return null;
+    }
+
+    return result.rows[0];
+}
+
 module.exports = {
-    getAllTeams
+    getAllTeams,
+    getTeamById
 };
