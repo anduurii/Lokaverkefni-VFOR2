@@ -8,7 +8,7 @@
     <% teams.forEach(team => { %>
         <div>
             <div>
-                <img src="<%= team.logo %>" alt="">
+                <img src="<%= team.logo %>" alt="<%= team.title %>">
                 <h4><%= team.title %></h4>
                 <p><%= team.description %></p>
                 <a href="/team/<%= team.id %>">See more</a>
