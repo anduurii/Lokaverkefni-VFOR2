@@ -1,40 +1,40 @@
-const teamService = require('../services/teamService');
+const playerService = require('../services/playerService');
 
 const getHomePage = async (req, res) => {
     try {
-        const teams = await teamService.getAllTeams();
+        const players = await playerService.getAllPlayers();
 
-        res.render('index', {
+        res.render('players', {
             title : 'CSpedia',
-            teams: teams
+            players : players
         });
     } catch (error) {
-        console.error('Error with getting teams:', error);
-        res.status(500).send("System Error - Can't load teams")
+        console.error('Error with getting players:', error);
+        res.status(500).send("System Error - Can't load players")
     }
 };
 
-const getTeamDetails = async(req, res) => {
+const getPlayerDetails = async(req, res) => {
     try {
         const id = req.params.id;
-        const team = await teamService.getTeamById(id);
+        const player = await playerService.getPlayerById(id);
     
 
-        if (!team) {
+        if (!player) {
             return res.status(404).send('Site Not Found.');
         }
 
-        res.render('team-details', {
-            title: team.title,
-            team: team
+        res.render('player-details', {
+            title: player.nickname,
+            player: player
         });
     } catch (error) {
-        console.error('Error getting team', error);
-        res.status(500).send('System Error - Can\'t load team');
+        console.error('Error getting player', error);
+        res.status(500).send('System Error - Can\'t load player');
     }
 };
 
 module.exports = {
     getHomePage,
-    getTeamDetails
+    getPlayerDetails
 };

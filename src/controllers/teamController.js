@@ -18,7 +18,8 @@ const getTeamDetails = async(req, res) => {
     try {
         const id = req.params.id;
         const team = await teamService.getTeamById(id);
-    
+        const players = await teamService.getPlayersByTeamId(id);
+
 
         if (!team) {
             return res.status(404).send('Site Not Found.');
@@ -26,7 +27,8 @@ const getTeamDetails = async(req, res) => {
 
         res.render('team-details', {
             title: team.title,
-            team: team
+            team: team,
+            players: players
         });
     } catch (error) {
         console.error('Error getting team', error);

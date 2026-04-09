@@ -15,7 +15,18 @@ const getTeamById = async (id) => {
     return result.rows[0];
 }
 
+const getPlayersByTeamId = async (id) => {
+    const result = await db.query('SELECT * FROM players WHERE team_id = $1', [id]);
+
+    if (result.rows.length === 0) {
+        return null;
+    }
+
+    return result.rows;
+}
+
 module.exports = {
     getAllTeams,
-    getTeamById
+    getTeamById,
+    getPlayersByTeamId
 };
