@@ -1,7 +1,7 @@
 const db = require('../lib/db');
 
 const getAllTeams = async () => {
-    const result = await db.query('SELECT * FROM teams ORDER BY id ASC');
+    const result = await db.query('SELECT * FROM teams ORDER BY title ASC');
     return result.rows;
 };
 
@@ -16,7 +16,7 @@ const getTeamById = async (id) => {
 }
 
 const getPlayersByTeamId = async (id) => {
-    const result = await db.query('SELECT * FROM players WHERE team_id = $1', [id]);
+    const result = await db.query('SELECT * FROM players WHERE team_id = $1 ORDER BY nickname ASC', [id]);
 
     if (result.rows.length === 0) {
         return null;

@@ -1,7 +1,7 @@
 const db = require('../lib/db');
 
 const getAllPlayers = async () => {
-    const result = await db.query('SELECT * FROM players ORDER BY id ASC');
+    const result = await db.query('SELECT * FROM players ORDER BY nickname ASC');
     return result.rows;
 };
 
