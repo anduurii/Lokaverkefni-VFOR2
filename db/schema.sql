@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS players (
     nickname VARCHAR(255) NOT NULL,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
+    picture VARCHAR(255) NOT NULL,
     nationality VARCHAR(255) NOT NULL,
     date_of_birth DATE NOT NULL,
     role VARCHAR(255) NOT NULL,
