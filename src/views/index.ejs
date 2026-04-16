@@ -2,20 +2,15 @@
 
 <h1>CS2 Teams</h1>
 
-
-<section>
-
+<div class="card-grid">
     <% teams.forEach(team => { %>
-        <div>
-            <div>
-                <img src="<%= team.logo %>" alt="<%= team.title %>">
-                <h4><%= team.title %></h4>
-                <p><%= team.description %></p>
-                <a href="/team/<%= team.id %>">See more</a>
-            </div>
-        </div>
+    <div class="card">
+        <img src="<%= team.logo %>" alt="<%= team.title %>">
+        <h4><%= team.title %></h4>
+        <p><%= team.description %></p>
+        <a href="/team/<%= team.id %>">See more</a>
+    </div>
     <% }) %>
-
-</section>
+</div>
 
 <%- include('partials/footer') %>

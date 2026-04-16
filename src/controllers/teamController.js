@@ -36,6 +36,8 @@ const getTeamDetails = async(req, res) => {
     }
 };
 
+
+
 module.exports = {
     getHomePage,
     getTeamDetails
