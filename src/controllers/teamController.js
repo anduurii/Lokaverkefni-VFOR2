@@ -36,9 +36,28 @@ const getTeamDetails = async(req, res) => {
     }
 };
 
+const getPlayerDetails = async(req, res) => {
+    try {
+        const id = req.params.id;
+        const player = await teamService.getPlayerById(id);
+    
 
+        if (!player) {
+            return res.status(404).send('Site Not Found.');
+        }
+
+        res.render('player-details', {
+            title: player.nickname,
+            player: player
+        });
+    } catch (error) {
+        console.error('Error getting player', error);
+        res.status(500).send('System Error - Can\'t load player');
+    }
+};
 
 module.exports = {
     getHomePage,
-    getTeamDetails
+    getTeamDetails,
+    getPlayerDetails
 };
