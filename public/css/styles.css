@@ -57,4 +57,9 @@ main {
   padding: 0px 50px 0px 50px;
 }
 
+.title {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
 /*# sourceMappingURL=styles.css.map */
