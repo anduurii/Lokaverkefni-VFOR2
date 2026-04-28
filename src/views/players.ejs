@@ -1,11 +1,14 @@
 <%- include('partials/header') %>
 
+<h1>Players</h1>
+
 <div class="card-grid">
     <% players.forEach(player => { %>
     <div class="card">
         <img src="<%= player.picture %>" alt=" <%= player.nickname %>">
         <h4><%= player.nickname %></h4>
-        <p>test</p>
+        <p>Name: <%= player.first_name %> <%= player.last_name %></p>
+        <p>Nationality: <%= player.nationality %></p>
         <a href="/players/<%= player.id %>">See more</a>
     </div>
     <% }) %>

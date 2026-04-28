@@ -40,14 +40,14 @@ img, picture, video, canvas, svg {
 
 header {
   background-color: #404040;
-  color: white;
+  color: #ffffff;
   padding: 1rem;
   margin-bottom: 2rem;
   text-align: center;
   border-bottom: 4px solid black;
 }
 header a {
-  color: #fff;
+  color: #ffffff;
   padding: 5px;
   text-decoration: none;
   text-align: center;
