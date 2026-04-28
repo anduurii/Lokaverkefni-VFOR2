@@ -3,14 +3,36 @@
 <h1>CS2 Teams</h1>
 
 <div class="card-grid">
-    <% teams.forEach(team => { %>
-    <div class="card">
-        <img src="<%= team.logo %>" alt="<%= team.title %>">
-        <h4><%= team.title %></h4>
-        <p><%= team.description %></p>
-        <a href="/team/<%= team.id %>">See more</a>
-    </div>
-    <% }) %>
+    <% if (teams && teams.length > 0) { %>
+        <% teams.forEach(team => { %>
+            <div class="card">
+
+                <% if (team.logo) { %>
+                    <div class="card-img" style="--bg-url: url('<%= team.logo %>')"></div>
+                <% } else { %>
+                    <div class="card-img placeholder-img"></div>
+                <% } %>
+
+                <div class="card-info">
+                    <h4><%= team.title %></h4>
+                    <p><%= team.description %></p>
+                    <a href="/team/<%= team.id %>">See more</a>
+                </div>
+            </div>
+            <% }) %>
+                <% } else { %>
+                <div class="team-card">
+                    <div class="card-info">
+                        <h4>No team found</h4>
+                        <p>Add teams to database</p>
+                    </div>
+                </div>
+                <% } %>
 </div>
+
+
+
+
+
 
 <%- include('partials/footer') %>

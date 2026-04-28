@@ -1,0 +1,12 @@
+.card-img {
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}

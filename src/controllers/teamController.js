@@ -56,8 +56,49 @@ const getPlayerDetails = async(req, res) => {
     }
 };
 
+
+const getAddTeamForm = (req, res) => {
+    res.render('add-team', {
+        title: 'Add team'
+    });
+};
+
+
+
+
+
+const createNewTeam = async (req, res) => {
+    try {
+        const { title, logo, region, description } = req.body;
+
+        if (!title) {
+            return res.status(400).send(
+                'Title may not be empty.'
+            );
+        }
+
+        const newTeam = await teamService.createTeam(
+            title,
+            logo,
+            region,
+            description
+        );
+
+        res.redirect(`/teams/${newTeam.id}`);
+    } catch (error) {
+        console.error('Error while making team', error);
+        res.status(500).send(
+            'System Error - Couldn\'t save team'
+        );
+    }
+};
+
+
 module.exports = {
     getHomePage,
     getTeamDetails,
-    getPlayerDetails
+    getPlayerDetails,
+    getAddTeamForm,
+    createNewTeam
+
 };

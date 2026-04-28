@@ -36,10 +36,24 @@ const getPlayerById = async (id) => {
 };
 
 
+const createTeam = async (title, logo, region, description) => {
+    const sql = `
+        INSERT INTO teams (title, logo, region, description)
+        VALUES ($1, $2, $3, $4)
+        RETURNING *;
+    `;
+
+    const values = [title, logo, region, description];
+    const result = await db.query(sql, values);
+
+    return result.rows[0];
+};
+
 
 module.exports = {
     getAllTeams,
     getTeamById,
     getPlayersByTeamId,
-    getPlayerById
+    getPlayerById,
+    createTeam
 };
