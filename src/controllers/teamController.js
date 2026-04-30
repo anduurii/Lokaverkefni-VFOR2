@@ -65,8 +65,6 @@ const getAddTeamForm = (req, res) => {
 
 
 
-
-
 const createNewTeam = async (req, res) => {
     try {
         const { title, logo, region, description } = req.body;

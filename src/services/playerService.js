@@ -15,7 +15,21 @@ const getPlayerById = async (id) => {
     return result.rows[0];    
 };
 
+const createPlayer = async (nickname, first_name, last_name, picture, nationality, date_of_birth, role) => {
+    const sql = `
+        INSERT INTO players (nickname, first_name, last_name, picture, nationality, date_of_birth, role)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        RETURNING *;
+    `;
+
+    const values = [nickname, first_name, last_name, picture, nationality, date_of_birth, role];
+    const result = await db.query(sql, values);
+
+    return result.rows[0];
+};
+
 module.exports = {
     getAllPlayers,
-    getPlayerById
+    getPlayerById,
+    createPlayer
 };

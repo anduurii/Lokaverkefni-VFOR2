@@ -17,9 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 
-
-app.use('/', teamRoutes);
 app.use('/', playerRoutes);
+app.use('/', teamRoutes);
 
 
 app.listen(PORT, () => {
