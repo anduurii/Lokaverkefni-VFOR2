@@ -15,14 +15,28 @@ const getPlayerById = async (id) => {
     return result.rows[0];    
 };
 
-const createPlayer = async (nickname, first_name, last_name, picture, nationality, date_of_birth, role) => {
+const getTeamIdByName = async (name) => {
+    const result = await db.query('SELECT id FROM teams WHERE title = $1', [name]);
+
+    if (result.rows.length === 0) {
+        return null;
+    }
+
+    return result.rows[0].id;
+}
+
+
+
+const createPlayer = async (nickname, first_name, last_name, picture, nationality, date_of_birth, role, team) => {
+    const team_id = await getTeamIdByName(team);
+    
     const sql = `
-        INSERT INTO players (nickname, first_name, last_name, picture, nationality, date_of_birth, role)
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        INSERT INTO players (nickname, first_name, last_name, picture, nationality, date_of_birth, role, team_id)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING *;
     `;
 
-    const values = [nickname, first_name, last_name, picture, nationality, date_of_birth, role];
+    const values = [nickname, first_name, last_name, picture, nationality, date_of_birth, role, team_id];
     const result = await db.query(sql, values);
 
     return result.rows[0];

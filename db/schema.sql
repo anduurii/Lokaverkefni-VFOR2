@@ -8,20 +8,20 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS teams (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL UNIQUE,
     logo VARCHAR(255),
-    region VARCHAR(255) NOT NULL,
+    region VARCHAR(255),
     description TEXT
 );
 
 CREATE TABLE IF NOT EXISTS players (
     id SERIAL PRIMARY KEY,
-    nickname VARCHAR(255) NOT NULL,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    picture VARCHAR(255) NOT NULL,
-    nationality VARCHAR(255) NOT NULL,
-    date_of_birth DATE NOT NULL,
+    nickname VARCHAR(255) NOT NULL UNIQUE,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    picture VARCHAR(255),
+    nationality VARCHAR(255),
+    date_of_birth DATE,
     role VARCHAR(255) NOT NULL,
     team_id INT,
 
@@ -30,3 +30,4 @@ CREATE TABLE IF NOT EXISTS players (
         REFERENCES teams(id)
         ON DELETE CASCADE
 );
+

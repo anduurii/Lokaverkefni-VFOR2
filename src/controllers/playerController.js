@@ -43,12 +43,16 @@ const getAddPlayerForm = (req, res) => {
 
 const createNewPlayer = async (req, res) => {
     try {
-        const { nickname, first_name, last_name, picture, nationality, date_of_birth, role } = req.body;
+        const { nickname, first_name, last_name, picture, nationality, date_of_birth, role, team } = req.body;
 
-        if (!nickname) {
+        if (!nickname || !role) {
             return res.status(400).send(
-                'Nickname may not be empty'
+                'Nickname, role and team may not be empty'
             );
+        } else if (!team) {
+            return res.status(400).send(
+                'team doesn\'t exist or you wrote it wrong'
+            )
         }
 
         const newPlayer = await playerService.createPlayer(
@@ -58,7 +62,8 @@ const createNewPlayer = async (req, res) => {
             picture, 
             nationality, 
             date_of_birth, 
-            role
+            role,
+            team
         );
 
         res.redirect(`/players/${newPlayer.id}`);

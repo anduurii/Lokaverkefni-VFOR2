@@ -3,8 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
-const teamRoutes = require('./src/routes/teamRoutes');
-const playerRoutes = require('./src/routes/playerRoutes');
+const routes = require('./src/routes/routes');
 
 
 const app = express();
@@ -17,8 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', playerRoutes);
-app.use('/', teamRoutes);
+app.use('/', routes);
 
 
 app.listen(PORT, () => {
