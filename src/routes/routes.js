@@ -13,6 +13,6 @@ router.get('/players/ny', playerController.getAddPlayerForm);
 router.post('/players/ny', playerController.createNewPlayer);
 
 router.get('/teams/:id', teamController.getTeamDetails);
-router.get('/players/:id', teamController.getPlayerDetails);
+router.get('/players/:id', playerController.getPlayerDetails);
 
 module.exports = router;

@@ -19,15 +19,17 @@ const getPlayerDetails = async(req, res) => {
     try {
         const id = req.params.id;
         const player = await playerService.getPlayerById(id);
-    
+        const team = await playerService.getTeamNameById(player.team_id);
 
         if (!player) {
             return res.status(404).send('Site Not Found.');
         }
 
+
         res.render('player-details', {
             title: player.nickname,
-            player: player
+            player: player,
+            team: team
         });
     } catch (error) {
         console.error('Error getting player', error);
@@ -45,15 +47,11 @@ const createNewPlayer = async (req, res) => {
     try {
         const { nickname, first_name, last_name, picture, nationality, date_of_birth, role, team } = req.body;
 
-        if (!nickname || !role) {
+        if (!nickname || !role || !team) {
             return res.status(400).send(
                 'Nickname, role and team may not be empty'
             );
-        } else if (!team) {
-            return res.status(400).send(
-                'team doesn\'t exist or you wrote it wrong'
-            )
-        }
+        } 
 
         const newPlayer = await playerService.createPlayer(
             nickname, 

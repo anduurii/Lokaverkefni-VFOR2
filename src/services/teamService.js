@@ -25,17 +25,6 @@ const getPlayersByTeamId = async (id) => {
     return result.rows;
 }
 
-const getPlayerById = async (id) => {
-    const result = await db.query('SELECT * FROM players WHERE id = $1', [id]);
-
-    if (result.rows.length === 0) {
-        return null;
-    }
-
-    return result.rows[0];    
-};
-
-
 const createTeam = async (title, logo, region, description) => {
     const sql = `
         INSERT INTO teams (title, logo, region, description)
@@ -54,6 +43,5 @@ module.exports = {
     getAllTeams,
     getTeamById,
     getPlayersByTeamId,
-    getPlayerById,
     createTeam
 };

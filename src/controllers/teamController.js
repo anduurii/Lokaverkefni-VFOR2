@@ -36,27 +36,6 @@ const getTeamDetails = async(req, res) => {
     }
 };
 
-const getPlayerDetails = async(req, res) => {
-    try {
-        const id = req.params.id;
-        const player = await teamService.getPlayerById(id);
-    
-
-        if (!player) {
-            return res.status(404).send('Site Not Found.');
-        }
-
-        res.render('player-details', {
-            title: player.nickname,
-            player: player
-        });
-    } catch (error) {
-        console.error('Error getting player', error);
-        res.status(500).send('System Error - Can\'t load player');
-    }
-};
-
-
 const getAddTeamForm = (req, res) => {
     res.render('add-team', {
         title: 'Add team'
@@ -95,7 +74,6 @@ const createNewTeam = async (req, res) => {
 module.exports = {
     getHomePage,
     getTeamDetails,
-    getPlayerDetails,
     getAddTeamForm,
     createNewTeam
 

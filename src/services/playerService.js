@@ -23,8 +23,18 @@ const getTeamIdByName = async (name) => {
     }
 
     return result.rows[0].id;
-}
+};
 
+
+const getTeamNameById = async (team_id) => {
+    const result = await db.query('SELECT title FROM teams WHERE id = $1', [team_id]);
+
+    if (result.rows.length === 0) {
+        return null;
+    }
+
+    return result.rows[0].title;
+};
 
 
 const createPlayer = async (nickname, first_name, last_name, picture, nationality, date_of_birth, role, team) => {
@@ -45,5 +55,7 @@ const createPlayer = async (nickname, first_name, last_name, picture, nationalit
 module.exports = {
     getAllPlayers,
     getPlayerById,
+    getTeamIdByName,
+    getTeamNameById,
     createPlayer
 };
