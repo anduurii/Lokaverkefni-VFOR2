@@ -14,9 +14,9 @@
         <h4><%= player.nickname %></h4>
         <p>Name: <%= player.first_name %> <%= player.last_name %></p>
         <p>Nationality: <%= player.nationality %></p>
-        <p>Born: <%= player.date_of_birth.toLocaleDateString() %></p>
+        <p>Born: <%= new Date(player.date_of_birth).toLocaleDateString() %></p>
         <p>Role: <%= player.role %></p>
-        <p>Team: <%= team %></p>
+        <p>Team: <%= team || 'No team' %></p>
     </div>
 </div>
 

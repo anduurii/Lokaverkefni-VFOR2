@@ -1,24 +1,45 @@
 @use '../variables' as *;
 
+.card {
+    border: 1px solid $border-color;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 5px;
+    background-color: darken($primary-color, 5%);
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+}
 
-    .card {
-        border: 1px $border-color;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 5px;
-        background-color: darken($primary-color, 5%);
-    }
+.card-img {
+    background-image: var(--bg-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+}
 
-    .card-img {
-        background-image: var(--bg-url);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 200px;
+.placeholder-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+
+    background-color: darken($primary-color, 10%);
+    border: 1px dashed $border-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $text-color;
+    font-size: 12px;
+
+    &::after {
+        content: "No image";
+        opacity: 0.6;
     }
 }
 
@@ -27,20 +48,24 @@
     display: flex;
     justify-content: center;
 
-     .card {
-        border: 1px $border-color;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 5px;
-        background-color: darken($primary-color, 5%);
+    .card {
         width: 500px;
     }
+}
 
-    .card-img {
-        background-image: var(--bg-url);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 200px;  
+.card-info {
+    margin-top: 10px;
+
+    h4 {
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 2px 0;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 5px;
     }
 }

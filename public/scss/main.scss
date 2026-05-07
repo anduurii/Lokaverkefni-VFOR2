@@ -1,15 +1,14 @@
 @use 'variables' as *;
 @use 'base/reset';
-@use 'components/header';
 @use 'components/card';
+@use 'components/header';
 @use 'components/form';
 
 main {
-    padding: 0px 50px 0px 50px;
+    padding: 0px 50px;
 }
 
 .title {
-    border-bottom: 1px $border-color;
-
+    border-bottom: 1px solid $border-color;
     margin-bottom: 20px;
 }
