@@ -3,15 +3,36 @@
 <h1 class="title">Players</h1>
 
 <div class="card-grid">
-    <% players.forEach(player => { %>
-    <div class="card">
-        <img src="<%= player.picture %>" alt=" <%= player.nickname %>">
-        <h4><%= player.nickname %></h4>
-        <p>Name: <%= player.first_name %> <%= player.last_name %></p>
-        <p>Nationality: <%= player.nationality %></p>
-        <a href="/players/<%= player.id %>">See more</a>
-    </div>
-    <% }) %>
+    <% if (players && players.length > 0) { %>
+        <% players.forEach(player => { %>
+            <div class="card">
+
+                <% if (player.picture) { %>
+                    <div class="card-img" style="--bg-url: url('<%= player.picture %>')"></div>
+                <% } else { %>
+                    <div class="card-img placeholder-img"></div>
+                <% } %>
+
+                <div class="card-info">
+                    <h4><%= player.nickname %></h4>
+                    <p>Name: <%= player.first_name %> <%= player.last_name %></p>
+                    <p>Nationality: <%= player.nationality %></p>
+                    <a href="/players/<%= player.id %>">See more</a>
+                </div>
+            </div>
+            <% }) %>
+                <% } else { %>
+                <div class="card">
+                    <div class="card-info">
+                        <h4>No player found</h4>
+                        <p>Add players to database</p>
+                    </div>
+                </div>
+                <% } %>
 </div>
+
+
+
+
 
 <%- include('partials/footer') %>

@@ -1,10 +1,22 @@
 <%- include('partials/header') %>
 
-<div class="card-grid">
-    <img src="<%=player.picture %>" alt="<%= player.nickname %>">
+<div class="card-details-grid">
     <div class="card">
+
+
+        <% if (player.picture) { %>
+            <div class="card-img" style="--bg-url: url('<%= player.picture %>')"></div>
+
+        <% } else { %>
+            <div class="placeholder-img"></div>
+        <% } %>
+    
         <h4><%= player.nickname %></h4>
-        <p>SDAFASDFASDFSA</p>
+        <p>Name: <%= player.first_name %> <%= player.last_name %></p>
+        <p>Nationality: <%= player.nationality %></p>
+        <p>Born: <%= player.date_of_birth.toLocaleDateString() %></p>
+        <p>Role: <%= player.role %></p>
+        <p>Team:  </p>
     </div>
 </div>
 

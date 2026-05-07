@@ -21,16 +21,34 @@ img, picture, video, canvas, svg {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
-
-.card {
+.card-grid .card {
   border: 1px solid black;
   border-radius: 20px;
   padding: 20px;
   margin: 5px;
   background-color: rgb(242.25, 242.25, 242.25);
 }
+.card-grid .card-img {
+  background-image: var(--bg-url);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+}
 
-.card-img {
+.card-details-grid {
+  display: flex;
+  justify-content: center;
+}
+.card-details-grid .card {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 5px;
+  background-color: rgb(242.25, 242.25, 242.25);
+  width: 500px;
+}
+.card-details-grid .card-img {
   background-image: var(--bg-url);
   background-size: contain;
   background-repeat: no-repeat;

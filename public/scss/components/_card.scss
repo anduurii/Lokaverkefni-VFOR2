@@ -4,21 +4,43 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+
+    .card {
+        border: 1px $border-color;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 5px;
+        background-color: darken($primary-color, 5%);
+    }
+
+    .card-img {
+        background-image: var(--bg-url);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 200px;
+    }
 }
 
-.card {
-    border: 1px $border-color;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 5px;
-    background-color: darken($primary-color, 5%);
-}
 
-.card-img {
-    background-image: var(--bg-url);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 200px;
-}
+.card-details-grid {
+    display: flex;
+    justify-content: center;
 
+     .card {
+        border: 1px $border-color;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 5px;
+        background-color: darken($primary-color, 5%);
+        width: 500px;
+    }
+
+    .card-img {
+        background-image: var(--bg-url);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 200px;  
+    }
+}
