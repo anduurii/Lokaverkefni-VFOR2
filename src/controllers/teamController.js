@@ -71,10 +71,31 @@ const createNewTeam = async (req, res) => {
 };
 
 
+const removeTeam = async (req, res) => {
+    try {
+        const { title } = req.body;
+
+        if (!title) {
+            return res.status(400).send(
+                'title may not be empty'
+            );
+        }
+
+        const deletedTeam = await teamService.deleteTeamByTitle(title);
+
+        res.redirect('/');
+    } catch (error) {
+        console.error('Error removing team', error);
+        res.status(500).send("System Error - Can't remove team");
+    }
+}
+
+
 module.exports = {
     getHomePage,
     getTeamDetails,
     getAddTeamForm,
-    createNewTeam
+    createNewTeam,
+    removeTeam
 
 };

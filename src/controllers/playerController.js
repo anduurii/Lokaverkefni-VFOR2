@@ -73,9 +73,29 @@ const createNewPlayer = async (req, res) => {
     }
 };
 
+const removePlayer = async (req, res) => {
+    try {
+        const { nickname } = req.body;
+
+        if (!nickname) {
+            return res.status(400).send(
+                'Nickname may not be empty'
+            );
+        }
+
+        const deletedPlayer = await playerService.deletePlayerByNickname(nickname);
+
+        res.redirect('/players');
+    } catch (error) {
+        console.error('Error removing player', error);
+        res.status(500).send("System Error - Can't remove player");
+    }
+}
+
 module.exports = {
     getHomePage,
     getPlayerDetails,
     getAddPlayerForm,
-    createNewPlayer
+    createNewPlayer,
+    removePlayer
 };

@@ -38,10 +38,25 @@ const createTeam = async (title, logo, region, description) => {
     return result.rows[0];
 };
 
+const deleteTeamByTitle = async (title) => {
+    const clean = title.trim();
+
+    const result = await db.query(
+        'DELETE FROM teams WHERE title = $1 RETURNING *', 
+        [clean]
+    );
+
+    if (result.rows.length === 0) {
+        throw new Error(`Team not found`);
+    }
+
+    return result.rows[0];
+}
 
 module.exports = {
     getAllTeams,
     getTeamById,
     getPlayersByTeamId,
-    createTeam
+    createTeam,
+    deleteTeamByTitle
 };

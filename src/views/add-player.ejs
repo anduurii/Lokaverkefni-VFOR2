@@ -1,6 +1,8 @@
 <%- include('partials/header') %>
 
-<form action="/players/ny" method="POST">
+<h1>Add Player</h1>
+
+<form action="/players/new" method="POST">
 
     <div>
         <label for="nickname">Player's nickname:</label>
@@ -43,10 +45,23 @@
     </div>
 
 
-
-
     <button type="submit" class="btn-primary">
         Save Player
+    </button>
+
+</form>
+
+<h1>Remove Player</h1>
+
+<form action="/players/remove" method="POST">
+
+    <div>
+        <label for="nickname">Player's nickname:</label>
+        <input type="text" id="nickname" name="nickname" required>
+    </div>
+
+     <button type="submit" class="btn-primary">
+        Remove Player
     </button>
 
 </form>

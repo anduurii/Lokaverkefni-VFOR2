@@ -52,10 +52,27 @@ const createPlayer = async (nickname, first_name, last_name, picture, nationalit
     return result.rows[0];
 };
 
+
+const deletePlayerByNickname = async (nickname) => {
+    const clean = nickname.trim();
+
+    const result = await db.query(
+        'DELETE FROM players WHERE nickname = $1 RETURNING *', 
+        [clean]
+    );
+
+    if (result.rows.length === 0) {
+        throw new Error(`Player not found`);
+    }
+
+    return result.rows[0];
+}
+
 module.exports = {
     getAllPlayers,
     getPlayerById,
     getTeamIdByName,
     getTeamNameById,
-    createPlayer
+    createPlayer,
+    deletePlayerByNickname
 };
